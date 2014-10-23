@@ -1,5 +1,9 @@
 openvz_pptp_centos-debian-ubuntu
 ============================
+http://www.lknife.net/
+
+http://topmyhosting.com/
+
 首先检查端口：
 ============================
 
