@@ -1,6 +1,7 @@
 openvz_pptp_centos-debian-ubuntu
 ============================
 首先检查端口：
+============================
 
     cat /dev/ppp
     cat /dev/net/tun
@@ -14,6 +15,8 @@ openvz_pptp_centos-debian-ubuntu
 
 ============================
 1.CentOS-5x86-6 OpenVZ安装方法：
+============================
+http://www.lknife.net/server/uses/45
 
     wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/openvps_vpn_centos-5-6.sh
     chmod a+x openvps_vpn_centos-5-6.sh
@@ -23,7 +26,9 @@ openvz_pptp_centos-debian-ubuntu
 
     bash openvps_vpn_centos-5-6.sh
 
-2.Debian/Ubuntu OpenVZ安装方法
+2.Debian/Ubuntu OpenVZ安装方法：
+============================
+http://www.lknife.net/server/uses/37
 
     wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/auto-debian-ovz-pptp.sh
     sh auto-debian-ovz-pptp.sh
