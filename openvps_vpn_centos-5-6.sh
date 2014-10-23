@@ -66,10 +66,10 @@ function centos5(){
 	
 	arch=`uname -m`
 	
-	wget http://down.topmyhosting.com/vpn/dkms-2.0.17.5-1.noarch.rpm
-	wget http://down.topmyhosting.com/vpn/kernel_ppp_mppe-1.0.2-3dkms.noarch.rpm
-	wget http://down.topmyhosting.com/vpn/pptpd-1.3.4-1.rhel5.1.i386.rpm
-	wget http://down.topmyhosting.com/vpn/ppp-2.4.4-9.0.rhel5.i386.rpm
+	wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/dkms-2.0.17.5-1.noarch.rpm
+	wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/kernel_ppp_mppe-1.0.2-3dkms.noarch.rpm
+	wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/pptpd-1.3.4-1.rhel5.1.i386.rpm
+	wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/ppp-2.4.4-9.0.rhel5.i386.rpm
 
 	installVPN5
 	setting
@@ -88,10 +88,10 @@ function centos6(){
 	
 	arch=`uname -m`
 	
-	wget http://down.topmyhosting.com/vpn/dkms-2.0.17.5-1.noarch.rpm
-	wget http://down.topmyhosting.com/vpn/kernel_ppp_mppe-1.0.2-3dkms.noarch.rpm
-	wget http://down.topmyhosting.com/vpn/pptpd-1.3.4-2.el6.$arch.rpm
-	wget http://down.topmyhosting.com/vpn/ppp-2.4.5-17.0.rhel6.$arch.rpm
+	wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/dkms-2.0.17.5-1.noarch.rpm
+	wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/kernel_ppp_mppe-1.0.2-3dkms.noarch.rpm
+	wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/pptpd-1.3.4-2.el6.$arch.rpm
+	wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/ppp-2.4.5-17.0.rhel6.$arch.rpm
 
 	installVPN6
 	setting
