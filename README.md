@@ -22,7 +22,7 @@ http://topmyhosting.com/
 ============================
 http://www.lknife.net/server/uses/45
 
-    wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/openvps_vpn_centos-5-6.sh
+    wget --no-check-certificate https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/openvps_vpn_centos-5-6.sh
     chmod a+x openvps_vpn_centos-5-6.sh
     bash openvps_vpn_centos-5-6.sh
 
@@ -34,7 +34,7 @@ http://www.lknife.net/server/uses/45
 ============================
 http://www.lknife.net/server/uses/37
 
-    wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/auto-debian-ovz-pptp.sh
+    wget --no-check-certificate https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/auto-debian-ovz-pptp.sh
     sh auto-debian-ovz-pptp.sh
 
 或者进FTP编辑/etc/ppp/chap-secrets创建和修改账号
