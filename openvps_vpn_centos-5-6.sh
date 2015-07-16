@@ -1,23 +1,5 @@
 #!/bin/bash
 
-function installVPN5(){
-	
-	yum -y install make libpcap iptables gcc-c++ logrotate tar cpio perl pam tcp_wrappers
-	rpm -ivh dkms-2.0.17.5-1.noarch.rpm
-	rpm -ivh kernel_ppp_mppe-1.0.2-3dkms.noarch.rpm
-	rpm -qa kernel_ppp_mppe
-	rpm -Uvh ppp-2.4.4-9.0.rhel5.i386.rpm	
-	rpm -ivh pptpd-1.3.4-1.rhel5.1.i386.rpm
-}
-
-
-function installVPN6(){
-	
-	yum -y install make libpcap iptables gcc-c++ logrotate tar cpio perl pam tcp_wrappers dkms ppp pptpd
-	rpm -ivh kernel_ppp_mppe-1.0.2-3dkms.noarch.rpm
-	rpm -qa kernel_ppp_mppe
-}
-
 function setting(){
 	mknod /dev/ppp c 108 0 
 	echo 1 > /proc/sys/net/ipv4/ip_forward 
@@ -51,7 +33,7 @@ function setting(){
 	
 }
 
-function centos5(){
+function installVPN(){
 	echo "begin to install VPN services";
 	#check wether vps suppot ppp and tun
 	
@@ -63,37 +45,12 @@ function centos5(){
 	
 	arch=`uname -m`
 	
-	wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/dkms-2.0.17.5-1.noarch.rpm
-	wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/kernel_ppp_mppe-1.0.2-3dkms.noarch.rpm
-	wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/pptpd-1.3.4-1.rhel5.1.i386.rpm
-	wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/ppp-2.4.4-9.0.rhel5.i386.rpm
+	rpm -Uvh http://poptop.sourceforge.net/yum/stable/pptp-release-current.noarch.rpm
 
-	installVPN5
-	setting
-
-}
-
-function centos6(){
-	echo "begin to install VPN services";
-	#check wether vps suppot ppp and tun
+	yum -y install make libpcap iptables gcc-c++ logrotate tar cpio perl pam tcp_wrappers dkms kernel_ppp_mppe ppp pptpd
 	
-	yum remove -y pptpd ppp
-	iptables --flush POSTROUTING --table nat
-	iptables --flush FORWARD
-	rm -rf /etc/pptpd.conf
-	rm -rf /etc/ppp
-	
-	arch=`uname -m`
-	
-	rpm -Uvh http://poptop.sourceforge.net/yum/stable/rhel6/pptp-release-current.noarch.rpm
-	
-	wget ftp://rpmfind.net/linux/sourceforge/p/po/poptop/mppe%20module%20builder/kernel_ppp_mppe-1.0.2%20dkms-2.0.6/kernel_ppp_mppe-1.0.2-3dkms.noarch.rpm
-
-	installVPN6
 	setting
 }
-
-
 
 function repaireVPN(){
 	echo "begin to repaire VPN";
@@ -112,18 +69,15 @@ function addVPNuser(){
 	service pptpd start
 }
 
-echo "please select your operation system"
 echo "which do you want to?input the number."
-echo "1. my system is centos5 32bit(only support 32bit)"
-echo "2. my system is centos6 32bit or 64bit(they are support)"
-echo "3. repaire VPN service"
-echo "4. add VPN user"
+echo "1. install PPTP VPN service"
+echo "2. repaire VPN service"
+echo "3. add VPN user"
 read num
 
 case "$num" in
-[1] ) (centos5);;
-[2] ) (centos6);;
-[3] ) (repaireVPN);;
-[4] ) (addVPNuser);;
+[1] ) (installVPN);;
+[2] ) (repaireVPN);;
+[3] ) (addVPNuser);;
 *) echo "nothing,exit";;
 esac
