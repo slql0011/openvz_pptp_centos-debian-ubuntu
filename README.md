@@ -1,6 +1,6 @@
 openvz_pptp_centos-debian-ubuntu
 ============================
-forked from lknife/openvz_pptp_centos-debian-ubuntu
+forked from [lknife/openvz_pptp_centos-debian-ubuntu]https://github.com/lknife/openvz_pptp_centos-debian-ubuntu
 
 首先检查端口：
 ============================
