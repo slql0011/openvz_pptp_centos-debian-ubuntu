@@ -1,8 +1,8 @@
 #!/bin/bash
 
 function setting(){
-	mknod /dev/ppp c 108 0 
-	echo 1 > /proc/sys/net/ipv4/ip_forward 
+	mknod /dev/ppp c 108 0
+	echo 1 > /proc/sys/net/ipv4/ip_forward
 	echo "mknod /dev/ppp c 108 0" >> /etc/rc.local
 	echo "echo 1 > /proc/sys/net/ipv4/ip_forward" >> /etc/rc.local
 	echo "localip 172.16.36.1" >> /etc/pptpd.conf
@@ -30,25 +30,23 @@ function setting(){
 	echo "===========================TopMyHosting.com====================================="
 	echo "VPN service is installed, your VPN username is vpn,VPN password is ${pass}"
 	echo "===========================TopMyHosting.com====================================="
-	
+
 }
 
 function installVPN(){
 	echo "begin to install VPN services";
 	#check wether vps suppot ppp and tun
-	
+
 	yum remove -y pptpd ppp
 	iptables --flush POSTROUTING --table nat
 	iptables --flush FORWARD
 	rm -rf /etc/pptpd.conf
 	rm -rf /etc/ppp
-	
-	arch=`uname -m`
-	
+
 	rpm -Uvh http://poptop.sourceforge.net/yum/stable/pptp-release-current.noarch.rpm
 
 	yum -y install make libpcap iptables gcc-c++ logrotate tar cpio perl pam tcp_wrappers dkms kernel_ppp_mppe ppp pptpd
-	
+
 	setting
 }
 
