@@ -13,12 +13,9 @@ function installVPN5(){
 
 function installVPN6(){
 	
-	yum -y install make libpcap iptables gcc-c++ logrotate tar cpio perl pam tcp_wrappers
-	rpm -ivh dkms-2.0.17.5-1.noarch.rpm
+	yum -y install make libpcap iptables gcc-c++ logrotate tar cpio perl pam tcp_wrappers dkms ppp pptpd
 	rpm -ivh kernel_ppp_mppe-1.0.2-3dkms.noarch.rpm
 	rpm -qa kernel_ppp_mppe
-	rpm -Uvh ppp-2.4.5-17.0.rhel6.$arch.rpm	
-	rpm -ivh pptpd-1.3.4-2.el6.$arch.rpm
 }
 
 function setting(){
@@ -88,10 +85,9 @@ function centos6(){
 	
 	arch=`uname -m`
 	
-	wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/dkms-2.0.17.5-1.noarch.rpm
-	wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/kernel_ppp_mppe-1.0.2-3dkms.noarch.rpm
-	wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/pptpd-1.3.4-2.el6.$arch.rpm
-	wget https://github.com/lknife/openvz_pptp_centos-debian-ubuntu/raw/master/ppp-2.4.5-17.0.rhel6.$arch.rpm
+	rpm -Uvh http://poptop.sourceforge.net/yum/stable/rhel6/pptp-release-current.noarch.rpm
+	
+	wget ftp://rpmfind.net/linux/sourceforge/p/po/poptop/mppe%20module%20builder/kernel_ppp_mppe-1.0.2%20dkms-2.0.6/kernel_ppp_mppe-1.0.2-3dkms.noarch.rpm
 
 	installVPN6
 	setting
